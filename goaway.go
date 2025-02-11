@@ -92,9 +92,9 @@ func (g *ProfanityDetector) WithSanitizeSpaces(sanitize bool) *ProfanityDetector
 // custom profanities, false positives and false negatives dictionaries.
 // All dictionaries are expected to be lowercased.
 func (g *ProfanityDetector) WithCustomDictionary(profanities, falsePositives, falseNegatives []string) *ProfanityDetector {
-	g.profanities = profanities
-	g.falsePositives = falsePositives
-	g.falseNegatives = falseNegatives
+	g.profanities = append(g.profanities, profanities...)
+	g.falsePositives = append(g.falsePositives, falsePositives...)
+	g.falseNegatives = append(g.falseNegatives, falseNegatives...)
 	return g
 }
 
